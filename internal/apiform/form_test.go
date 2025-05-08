@@ -2,7 +2,7 @@ package apiform
 
 import (
 	"bytes"
-	"github.com/stainless-sdks/scorecard-go/packages/param"
+	"github.com/scorecard-ai/scorecard-go/packages/param"
 	"io"
 	"mime/multipart"
 	"strings"

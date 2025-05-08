@@ -1,8 +1,8 @@
 package paramutil
 
 import (
-	"github.com/stainless-sdks/scorecard-go/packages/param"
-	"github.com/stainless-sdks/scorecard-go/packages/respjson"
+	"github.com/scorecard-ai/scorecard-go/packages/param"
+	"github.com/scorecard-ai/scorecard-go/packages/respjson"
 )
 
 func AddrIfPresent[T comparable](v param.Opt[T]) *T {

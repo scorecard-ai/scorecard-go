@@ -18,10 +18,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/stainless-sdks/scorecard-go/internal"
-	"github.com/stainless-sdks/scorecard-go/internal/apierror"
-	"github.com/stainless-sdks/scorecard-go/internal/apiform"
-	"github.com/stainless-sdks/scorecard-go/internal/apiquery"
+	"github.com/scorecard-ai/scorecard-go/internal"
+	"github.com/scorecard-ai/scorecard-go/internal/apierror"
+	"github.com/scorecard-ai/scorecard-go/internal/apiform"
+	"github.com/scorecard-ai/scorecard-go/internal/apiquery"
 )
 
 func getDefaultHeaders() map[string]string {

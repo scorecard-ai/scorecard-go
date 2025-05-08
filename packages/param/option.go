@@ -3,7 +3,7 @@ package param
 import (
 	"encoding/json"
 	"fmt"
-	shimjson "github.com/stainless-sdks/scorecard-go/internal/encoding/json"
+	shimjson "github.com/scorecard-ai/scorecard-go/internal/encoding/json"
 	"time"
 )
 

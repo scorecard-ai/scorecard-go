@@ -1,7 +1,7 @@
 package paramutil
 
 import (
-	"github.com/stainless-sdks/scorecard-go/internal/encoding/json/sentinel"
+	"github.com/scorecard-ai/scorecard-go/internal/encoding/json/sentinel"
 )
 
 // NullPtr returns a pointer to the zero value of the type T.

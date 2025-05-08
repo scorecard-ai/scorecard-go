@@ -1,7 +1,7 @@
 package sentinel
 
 import (
-	"github.com/stainless-sdks/scorecard-go/internal/encoding/json/shims"
+	"github.com/scorecard-ai/scorecard-go/internal/encoding/json/shims"
 	"reflect"
 	"sync"
 )
