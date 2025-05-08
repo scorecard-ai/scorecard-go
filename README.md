@@ -2,7 +2,7 @@
 
 <a href="https://pkg.go.dev/github.com/scorecard-ai/scorecard-go"><img src="https://pkg.go.dev/badge/github.com/scorecard-ai/scorecard-go.svg" alt="Go Reference"></a>
 
-The Scorecard Go library provides convenient access to the [Scorecard REST API](https://docs.scorecard.io)
+The Scorecard Go library provides convenient access to the [Scorecard REST API](https://docs.scorecard.io/api-reference/overview)
 from applications written in Go.
 
 It is generated with [Stainless](https://www.stainless.com/).
