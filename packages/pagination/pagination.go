@@ -5,11 +5,11 @@ package pagination
 import (
 	"net/http"
 
-	"github.com/stainless-sdks/scorecard-go/internal/apijson"
-	"github.com/stainless-sdks/scorecard-go/internal/requestconfig"
-	"github.com/stainless-sdks/scorecard-go/option"
-	"github.com/stainless-sdks/scorecard-go/packages/param"
-	"github.com/stainless-sdks/scorecard-go/packages/respjson"
+	"github.com/scorecard-ai/scorecard-go/internal/apijson"
+	"github.com/scorecard-ai/scorecard-go/internal/requestconfig"
+	"github.com/scorecard-ai/scorecard-go/option"
+	"github.com/scorecard-ai/scorecard-go/packages/param"
+	"github.com/scorecard-ai/scorecard-go/packages/respjson"
 )
 
 // aliased to make [param.APIUnion] private when embedding

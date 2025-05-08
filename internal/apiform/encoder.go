@@ -13,7 +13,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/stainless-sdks/scorecard-go/packages/param"
+	"github.com/scorecard-ai/scorecard-go/packages/param"
 )
 
 var encoders sync.Map // map[encoderEntry]encoderFunc

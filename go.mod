@@ -1,4 +1,4 @@
-module github.com/stainless-sdks/scorecard-go
+module github.com/scorecard-ai/scorecard-go
 
 go 1.21
 

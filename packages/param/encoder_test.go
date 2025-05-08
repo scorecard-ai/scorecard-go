@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/stainless-sdks/scorecard-go/packages/param"
+	"github.com/scorecard-ai/scorecard-go/packages/param"
 )
 
 type Struct struct {

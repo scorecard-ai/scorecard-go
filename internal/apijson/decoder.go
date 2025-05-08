@@ -7,7 +7,7 @@ package apijson
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/stainless-sdks/scorecard-go/packages/param"
+	"github.com/scorecard-ai/scorecard-go/packages/param"
 	"reflect"
 	"strconv"
 	"sync"

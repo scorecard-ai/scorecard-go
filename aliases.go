@@ -3,8 +3,8 @@
 package scorecard
 
 import (
-	"github.com/stainless-sdks/scorecard-go/internal/apierror"
-	"github.com/stainless-sdks/scorecard-go/packages/param"
+	"github.com/scorecard-ai/scorecard-go/internal/apierror"
+	"github.com/scorecard-ai/scorecard-go/packages/param"
 )
 
 // aliased to make [param.APIUnion] private when embedding
