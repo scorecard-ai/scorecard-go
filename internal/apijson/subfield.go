@@ -1,7 +1,7 @@
 package apijson
 
 import (
-	"github.com/stainless-sdks/scorecard-go/packages/respjson"
+	"github.com/scorecard-ai/scorecard-go/packages/respjson"
 	"reflect"
 )
 

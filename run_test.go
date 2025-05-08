@@ -8,9 +8,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/stainless-sdks/scorecard-go"
-	"github.com/stainless-sdks/scorecard-go/internal/testutil"
-	"github.com/stainless-sdks/scorecard-go/option"
+	"github.com/scorecard-ai/scorecard-go"
+	"github.com/scorecard-ai/scorecard-go/internal/testutil"
+	"github.com/scorecard-ai/scorecard-go/option"
 )
 
 func TestRunNewWithOptionalParams(t *testing.T) {

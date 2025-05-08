@@ -6,7 +6,7 @@ import (
 	"reflect"
 	"time"
 
-	shimjson "github.com/stainless-sdks/scorecard-go/internal/encoding/json"
+	shimjson "github.com/scorecard-ai/scorecard-go/internal/encoding/json"
 
 	"github.com/tidwall/sjson"
 )

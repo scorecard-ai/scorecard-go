@@ -1,7 +1,7 @@
 package sentinel_test
 
 import (
-	"github.com/stainless-sdks/scorecard-go/internal/encoding/json/sentinel"
+	"github.com/scorecard-ai/scorecard-go/internal/encoding/json/sentinel"
 	"reflect"
 	"slices"
 	"testing"

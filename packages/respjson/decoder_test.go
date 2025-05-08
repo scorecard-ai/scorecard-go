@@ -3,8 +3,8 @@ package respjson_test
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/stainless-sdks/scorecard-go/internal/apijson"
-	rj "github.com/stainless-sdks/scorecard-go/packages/respjson"
+	"github.com/scorecard-ai/scorecard-go/internal/apijson"
+	rj "github.com/scorecard-ai/scorecard-go/packages/respjson"
 	"reflect"
 	"testing"
 )

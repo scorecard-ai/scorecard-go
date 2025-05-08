@@ -10,9 +10,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/stainless-sdks/scorecard-go"
-	"github.com/stainless-sdks/scorecard-go/internal"
-	"github.com/stainless-sdks/scorecard-go/option"
+	"github.com/scorecard-ai/scorecard-go"
+	"github.com/scorecard-ai/scorecard-go/internal"
+	"github.com/scorecard-ai/scorecard-go/option"
 )
 
 type closureTransport struct {

@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/stainless-sdks/scorecard-go/internal/requestconfig"
-	"github.com/stainless-sdks/scorecard-go/option"
+	"github.com/scorecard-ai/scorecard-go/internal/requestconfig"
+	"github.com/scorecard-ai/scorecard-go/option"
 )
 
 // Client creates a struct with services and top level methods that help with
