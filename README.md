@@ -43,23 +43,35 @@ import (
 func main() {
 	client := scorecard.NewClient(
 		option.WithAPIKey("My API Key"), // defaults to os.LookupEnv("SCORECARD_API_KEY")
-		option.WithEnvironmentStaging(), // or option.WithEnvironmentProduction() | option.WithEnvironmentLocal(); defaults to option.WithEnvironmentProduction()
 	)
 	testset, err := client.Testsets.New(
 		context.TODO(),
 		"314",
 		scorecard.TestsetNewParams{
+			Name: "Long Context Q&A",
 			Description: "Testset for long context Q&A chatbot.",
+			JsonSchema: map[string]any{
+				"type": "object",
+				"properties": map[string]interface{}{
+					"question": map[string]interface{}{
+						"type": "string",
+					},
+					"idealAnswer": map[string]interface{}{
+						"type": "string",
+					},
+					"provenance": map[string]interface{}{
+						"type": "string",
+					},
+					"geo": map[string]interface{}{
+						"type": "string",
+					},
+				},
+			},
 			FieldMapping: scorecard.TestsetNewParamsFieldMapping{
 				Inputs:   []string{"question"},
 				Labels:   []string{"idealAnswer"},
-				Metadata: []string{"string"},
+				Metadata: []string{},
 			},
-			JsonSchema: map[string]any{
-				"type":       "bar",
-				"properties": "bar",
-			},
-			Name: "Long Context Q&A",
 		},
 	)
 	if err != nil {
