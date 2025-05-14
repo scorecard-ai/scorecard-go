@@ -21,6 +21,7 @@ type Client struct {
 	Testcases     TestcaseService
 	Runs          RunService
 	Records       RecordService
+	Scores        ScoreService
 	Systems       SystemService
 	SystemConfigs SystemConfigService
 }
@@ -52,6 +53,7 @@ func NewClient(opts ...option.RequestOption) (r Client) {
 	r.Testcases = NewTestcaseService(opts...)
 	r.Runs = NewRunService(opts...)
 	r.Records = NewRecordService(opts...)
+	r.Scores = NewScoreService(opts...)
 	r.Systems = NewSystemService(opts...)
 	r.SystemConfigs = NewSystemConfigService(opts...)
 

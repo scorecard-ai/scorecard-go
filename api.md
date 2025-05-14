@@ -62,6 +62,16 @@ Methods:
 
 - <code title="post /runs/{runId}/records">client.Records.<a href="https://pkg.go.dev/github.com/scorecard-ai/scorecard-go#RecordService.New">New</a>(ctx <a href="https://pkg.go.dev/context">context</a>.<a href="https://pkg.go.dev/context#Context">Context</a>, runID <a href="https://pkg.go.dev/builtin#string">string</a>, body <a href="https://pkg.go.dev/github.com/scorecard-ai/scorecard-go">scorecard</a>.<a href="https://pkg.go.dev/github.com/scorecard-ai/scorecard-go#RecordNewParams">RecordNewParams</a>) (<a href="https://pkg.go.dev/github.com/scorecard-ai/scorecard-go">scorecard</a>.<a href="https://pkg.go.dev/github.com/scorecard-ai/scorecard-go#Record">Record</a>, <a href="https://pkg.go.dev/builtin#error">error</a>)</code>
 
+# Scores
+
+Response Types:
+
+- <a href="https://pkg.go.dev/github.com/scorecard-ai/scorecard-go">scorecard</a>.<a href="https://pkg.go.dev/github.com/scorecard-ai/scorecard-go#Score">Score</a>
+
+Methods:
+
+- <code title="put /records/{recordId}/scores/{metricConfigId}">client.Scores.<a href="https://pkg.go.dev/github.com/scorecard-ai/scorecard-go#ScoreService.Upsert">Upsert</a>(ctx <a href="https://pkg.go.dev/context">context</a>.<a href="https://pkg.go.dev/context#Context">Context</a>, metricConfigID <a href="https://pkg.go.dev/builtin#string">string</a>, params <a href="https://pkg.go.dev/github.com/scorecard-ai/scorecard-go">scorecard</a>.<a href="https://pkg.go.dev/github.com/scorecard-ai/scorecard-go#ScoreUpsertParams">ScoreUpsertParams</a>) (<a href="https://pkg.go.dev/github.com/scorecard-ai/scorecard-go">scorecard</a>.<a href="https://pkg.go.dev/github.com/scorecard-ai/scorecard-go#Score">Score</a>, <a href="https://pkg.go.dev/builtin#error">error</a>)</code>
+
 # Systems
 
 Response Types:
