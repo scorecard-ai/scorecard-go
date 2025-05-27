@@ -45,12 +45,10 @@ Methods:
 Response Types:
 
 - <a href="https://pkg.go.dev/github.com/scorecard-ai/scorecard-go">scorecard</a>.<a href="https://pkg.go.dev/github.com/scorecard-ai/scorecard-go#Run">Run</a>
-- <a href="https://pkg.go.dev/github.com/scorecard-ai/scorecard-go">scorecard</a>.<a href="https://pkg.go.dev/github.com/scorecard-ai/scorecard-go#RunUpdateResponse">RunUpdateResponse</a>
 
 Methods:
 
 - <code title="post /projects/{projectId}/runs">client.Runs.<a href="https://pkg.go.dev/github.com/scorecard-ai/scorecard-go#RunService.New">New</a>(ctx <a href="https://pkg.go.dev/context">context</a>.<a href="https://pkg.go.dev/context#Context">Context</a>, projectID <a href="https://pkg.go.dev/builtin#string">string</a>, body <a href="https://pkg.go.dev/github.com/scorecard-ai/scorecard-go">scorecard</a>.<a href="https://pkg.go.dev/github.com/scorecard-ai/scorecard-go#RunNewParams">RunNewParams</a>) (<a href="https://pkg.go.dev/github.com/scorecard-ai/scorecard-go">scorecard</a>.<a href="https://pkg.go.dev/github.com/scorecard-ai/scorecard-go#Run">Run</a>, <a href="https://pkg.go.dev/builtin#error">error</a>)</code>
-- <code title="patch /runs/{runId}">client.Runs.<a href="https://pkg.go.dev/github.com/scorecard-ai/scorecard-go#RunService.Update">Update</a>(ctx <a href="https://pkg.go.dev/context">context</a>.<a href="https://pkg.go.dev/context#Context">Context</a>, runID <a href="https://pkg.go.dev/builtin#string">string</a>, body <a href="https://pkg.go.dev/github.com/scorecard-ai/scorecard-go">scorecard</a>.<a href="https://pkg.go.dev/github.com/scorecard-ai/scorecard-go#RunUpdateParams">RunUpdateParams</a>) (<a href="https://pkg.go.dev/github.com/scorecard-ai/scorecard-go">scorecard</a>.<a href="https://pkg.go.dev/github.com/scorecard-ai/scorecard-go#RunUpdateResponse">RunUpdateResponse</a>, <a href="https://pkg.go.dev/builtin#error">error</a>)</code>
 
 # Records
 
