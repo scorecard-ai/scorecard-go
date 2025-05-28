@@ -46,18 +46,6 @@ func (r *RunService) New(ctx context.Context, projectID string, body RunNewParam
 	return
 }
 
-// Update the status of a Run.
-func (r *RunService) Update(ctx context.Context, runID string, body RunUpdateParams, opts ...option.RequestOption) (res *RunUpdateResponse, err error) {
-	opts = append(r.Options[:], opts...)
-	if runID == "" {
-		err = errors.New("missing required runId parameter")
-		return
-	}
-	path := fmt.Sprintf("runs/%s", runID)
-	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPatch, path, body, &res, opts...)
-	return
-}
-
 // A Run in the Scorecard system.
 type Run struct {
 	// The ID of the Run.
@@ -104,42 +92,6 @@ const (
 	RunStatusCompleted            RunStatus = "completed"
 )
 
-type RunUpdateResponse struct {
-	// The ID of the Run.
-	ID string `json:"id,required"`
-	// The status of the Run.
-	//
-	// Any of "pending", "awaiting_execution", "running_execution", "awaiting_scoring",
-	// "running_scoring", "awaiting_human_scoring", "completed".
-	Status RunUpdateResponseStatus `json:"status,required"`
-	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
-	JSON struct {
-		ID          respjson.Field
-		Status      respjson.Field
-		ExtraFields map[string]respjson.Field
-		raw         string
-	} `json:"-"`
-}
-
-// Returns the unmodified JSON received from the API
-func (r RunUpdateResponse) RawJSON() string { return r.JSON.raw }
-func (r *RunUpdateResponse) UnmarshalJSON(data []byte) error {
-	return apijson.UnmarshalRoot(data, r)
-}
-
-// The status of the Run.
-type RunUpdateResponseStatus string
-
-const (
-	RunUpdateResponseStatusPending              RunUpdateResponseStatus = "pending"
-	RunUpdateResponseStatusAwaitingExecution    RunUpdateResponseStatus = "awaiting_execution"
-	RunUpdateResponseStatusRunningExecution     RunUpdateResponseStatus = "running_execution"
-	RunUpdateResponseStatusAwaitingScoring      RunUpdateResponseStatus = "awaiting_scoring"
-	RunUpdateResponseStatusRunningScoring       RunUpdateResponseStatus = "running_scoring"
-	RunUpdateResponseStatusAwaitingHumanScoring RunUpdateResponseStatus = "awaiting_human_scoring"
-	RunUpdateResponseStatusCompleted            RunUpdateResponseStatus = "completed"
-)
-
 type RunNewParams struct {
 	// The IDs of the metrics this Run is using.
 	MetricIDs []string `json:"metricIds,omitzero,required"`
@@ -157,33 +109,3 @@ func (r RunNewParams) MarshalJSON() (data []byte, err error) {
 func (r *RunNewParams) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
-
-type RunUpdateParams struct {
-	// The status of the Run.
-	//
-	// Any of "pending", "awaiting_execution", "running_execution", "awaiting_scoring",
-	// "running_scoring", "awaiting_human_scoring", "completed".
-	Status RunUpdateParamsStatus `json:"status,omitzero,required"`
-	paramObj
-}
-
-func (r RunUpdateParams) MarshalJSON() (data []byte, err error) {
-	type shadow RunUpdateParams
-	return param.MarshalObject(r, (*shadow)(&r))
-}
-func (r *RunUpdateParams) UnmarshalJSON(data []byte) error {
-	return apijson.UnmarshalRoot(data, r)
-}
-
-// The status of the Run.
-type RunUpdateParamsStatus string
-
-const (
-	RunUpdateParamsStatusPending              RunUpdateParamsStatus = "pending"
-	RunUpdateParamsStatusAwaitingExecution    RunUpdateParamsStatus = "awaiting_execution"
-	RunUpdateParamsStatusRunningExecution     RunUpdateParamsStatus = "running_execution"
-	RunUpdateParamsStatusAwaitingScoring      RunUpdateParamsStatus = "awaiting_scoring"
-	RunUpdateParamsStatusRunningScoring       RunUpdateParamsStatus = "running_scoring"
-	RunUpdateParamsStatusAwaitingHumanScoring RunUpdateParamsStatus = "awaiting_human_scoring"
-	RunUpdateParamsStatusCompleted            RunUpdateParamsStatus = "completed"
-)

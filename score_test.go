@@ -13,7 +13,7 @@ import (
 	"github.com/scorecard-ai/scorecard-go/option"
 )
 
-func TestRunNewWithOptionalParams(t *testing.T) {
+func TestScoreUpsert(t *testing.T) {
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
 		baseURL = envURL
@@ -25,13 +25,15 @@ func TestRunNewWithOptionalParams(t *testing.T) {
 		option.WithBaseURL(baseURL),
 		option.WithAPIKey("My API Key"),
 	)
-	_, err := client.Runs.New(
+	_, err := client.Scores.Upsert(
 		context.TODO(),
-		"314",
-		scorecard.RunNewParams{
-			MetricIDs:      []string{"789", "101"},
-			TestsetID:      "246",
-			SystemConfigID: scorecard.String("87654321-4d3b-4ae4-8c7a-4b6e2a19ccf0"),
+		"a1b2c3d4-e5f6-7890-1234-567890abcdef",
+		scorecard.ScoreUpsertParams{
+			RecordID: "777",
+			Score: map[string]any{
+				"value":     "bar",
+				"reasoning": "bar",
+			},
 		},
 	)
 	if err != nil {

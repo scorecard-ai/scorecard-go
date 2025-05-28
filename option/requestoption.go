@@ -262,21 +262,21 @@ func WithRequestTimeout(dur time.Duration) RequestOption {
 // environment to be the "production" environment. An environment specifies which base URL
 // to use by default.
 func WithEnvironmentProduction() RequestOption {
-	return WithBaseURL("https://api2.scorecard.io/api/v2/")
+	return requestconfig.WithDefaultBaseURL("https://api2.scorecard.io/api/v2/")
 }
 
 // WithEnvironmentStaging returns a RequestOption that sets the current
 // environment to be the "staging" environment. An environment specifies which base URL
 // to use by default.
 func WithEnvironmentStaging() RequestOption {
-	return WithBaseURL("https://staging.api2.scorecard.io/api/v2/")
+	return requestconfig.WithDefaultBaseURL("https://staging.api2.scorecard.io/api/v2/")
 }
 
 // WithEnvironmentLocal returns a RequestOption that sets the current
 // environment to be the "local" environment. An environment specifies which base URL
 // to use by default.
 func WithEnvironmentLocal() RequestOption {
-	return WithBaseURL("http://localhost:3000/api/v2/")
+	return requestconfig.WithDefaultBaseURL("http://localhost:3000/api/v2/")
 }
 
 // WithAPIKey returns a RequestOption that sets the client setting "api_key".
