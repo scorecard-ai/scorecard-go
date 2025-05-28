@@ -109,22 +109,22 @@ func (r *TestcaseService) Get(ctx context.Context, testcaseID string, opts ...op
 }
 
 // A test case in the Scorecard system. Contains JSON data that is validated
-// against the schema defined by its Testset. The `inputs` and `labels` fields are
-// derived from the `data` field based on the Testset's `fieldMapping`, and include
-// all mapped fields, including those with validation errors. Testcases are stored
-// regardless of validation results, with any validation errors included in the
-// `validationErrors` field.
+// against the schema defined by its Testset. The `inputs` and `expected` fields
+// are derived from the `data` field based on the Testset's `fieldMapping`, and
+// include all mapped fields, including those with validation errors. Testcases are
+// stored regardless of validation results, with any validation errors included in
+// the `validationErrors` field.
 type Testcase struct {
 	// The ID of the Testcase.
 	ID string `json:"id,required"`
+	// Derived from data based on the Testset's fieldMapping. Contains all fields
+	// marked as expected outputs, including those with validation errors.
+	Expected map[string]any `json:"expected,required"`
 	// Derived from data based on the Testset's fieldMapping. Contains all fields
 	// marked as inputs, including those with validation errors.
 	Inputs map[string]any `json:"inputs,required"`
 	// The JSON data of the Testcase, which is validated against the Testset's schema.
 	JsonData map[string]any `json:"jsonData,required"`
-	// Derived from data based on the Testset's fieldMapping. Contains all fields
-	// marked as labels, including those with validation errors.
-	Labels map[string]any `json:"labels,required"`
 	// The ID of the Testset this Testcase belongs to.
 	TestsetID string `json:"testsetId,required"`
 	// Validation errors found in the Testcase data. If present, the Testcase doesn't
@@ -133,9 +133,9 @@ type Testcase struct {
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		ID               respjson.Field
+		Expected         respjson.Field
 		Inputs           respjson.Field
 		JsonData         respjson.Field
-		Labels           respjson.Field
 		TestsetID        respjson.Field
 		ValidationErrors respjson.Field
 		ExtraFields      map[string]respjson.Field
@@ -216,13 +216,6 @@ func (r *TestcaseNewParams) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-// A test case in the Scorecard system. Contains JSON data that is validated
-// against the schema defined by its Testset. The `inputs` and `labels` fields are
-// derived from the `data` field based on the Testset's `fieldMapping`, and include
-// all mapped fields, including those with validation errors. Testcases are stored
-// regardless of validation results, with any validation errors included in the
-// `validationErrors` field.
-//
 // The property JsonData is required.
 type TestcaseNewParamsItem struct {
 	// The JSON data of the Testcase, which is validated against the Testset's schema.

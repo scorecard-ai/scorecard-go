@@ -126,9 +126,9 @@ func (r *TestsetService) Get(ctx context.Context, testsetID string, opts ...opti
 
 // A collection of Testcases that share the same schema. Each Testset defines the
 // structure of its Testcases through a JSON schema. The `fieldMapping` object maps
-// top-level keys of the Testcase schema to their roles (input/label). Fields not
-// mentioned in the `fieldMapping` during creation or update are treated as
-// metadata.
+// top-level keys of the Testcase schema to their roles (input/expected output).
+// Fields not mentioned in the `fieldMapping` during creation or update are treated
+// as metadata.
 //
 // ## JSON Schema validation constraints supported:
 //
@@ -153,8 +153,8 @@ type Testset struct {
 	ID string `json:"id,required"`
 	// The description of the Testset.
 	Description string `json:"description,required"`
-	// Maps top-level keys of the Testcase schema to their roles (input/label).
-	// Unmapped fields are treated as metadata.
+	// Maps top-level keys of the Testcase schema to their roles (input/expected
+	// output). Unmapped fields are treated as metadata.
 	FieldMapping TestsetFieldMapping `json:"fieldMapping,required"`
 	// The JSON schema for each Testcase in the Testset.
 	JsonSchema map[string]any `json:"jsonSchema,required"`
@@ -178,19 +178,19 @@ func (r *Testset) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-// Maps top-level keys of the Testcase schema to their roles (input/label).
-// Unmapped fields are treated as metadata.
+// Maps top-level keys of the Testcase schema to their roles (input/expected
+// output). Unmapped fields are treated as metadata.
 type TestsetFieldMapping struct {
+	// Fields that represent expected outputs.
+	Expected []string `json:"expected,required"`
 	// Fields that represent inputs to the AI system.
 	Inputs []string `json:"inputs,required"`
-	// Fields that represent expected outputs/labels.
-	Labels []string `json:"labels,required"`
-	// Fields that are not inputs or labels.
+	// Fields that are not inputs or expected outputs.
 	Metadata []string `json:"metadata,required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
+		Expected    respjson.Field
 		Inputs      respjson.Field
-		Labels      respjson.Field
 		Metadata    respjson.Field
 		ExtraFields map[string]respjson.Field
 		raw         string
@@ -223,8 +223,8 @@ func (r *TestsetDeleteResponse) UnmarshalJSON(data []byte) error {
 type TestsetNewParams struct {
 	// The description of the Testset.
 	Description string `json:"description,required"`
-	// Maps top-level keys of the Testcase schema to their roles (input/label).
-	// Unmapped fields are treated as metadata.
+	// Maps top-level keys of the Testcase schema to their roles (input/expected
+	// output). Unmapped fields are treated as metadata.
 	FieldMapping TestsetNewParamsFieldMapping `json:"fieldMapping,omitzero,required"`
 	// The JSON schema for each Testcase in the Testset.
 	JsonSchema map[string]any `json:"jsonSchema,omitzero,required"`
@@ -241,16 +241,16 @@ func (r *TestsetNewParams) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-// Maps top-level keys of the Testcase schema to their roles (input/label).
-// Unmapped fields are treated as metadata.
+// Maps top-level keys of the Testcase schema to their roles (input/expected
+// output). Unmapped fields are treated as metadata.
 //
-// The properties Inputs, Labels, Metadata are required.
+// The properties Expected, Inputs, Metadata are required.
 type TestsetNewParamsFieldMapping struct {
+	// Fields that represent expected outputs.
+	Expected []string `json:"expected,omitzero,required"`
 	// Fields that represent inputs to the AI system.
 	Inputs []string `json:"inputs,omitzero,required"`
-	// Fields that represent expected outputs/labels.
-	Labels []string `json:"labels,omitzero,required"`
-	// Fields that are not inputs or labels.
+	// Fields that are not inputs or expected outputs.
 	Metadata []string `json:"metadata,omitzero,required"`
 	paramObj
 }
@@ -268,8 +268,8 @@ type TestsetUpdateParams struct {
 	Description param.Opt[string] `json:"description,omitzero"`
 	// The name of the Testset.
 	Name param.Opt[string] `json:"name,omitzero"`
-	// Maps top-level keys of the Testcase schema to their roles (input/label).
-	// Unmapped fields are treated as metadata.
+	// Maps top-level keys of the Testcase schema to their roles (input/expected
+	// output). Unmapped fields are treated as metadata.
 	FieldMapping TestsetUpdateParamsFieldMapping `json:"fieldMapping,omitzero"`
 	// The JSON schema for each Testcase in the Testset.
 	JsonSchema map[string]any `json:"jsonSchema,omitzero"`
@@ -284,16 +284,16 @@ func (r *TestsetUpdateParams) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, r)
 }
 
-// Maps top-level keys of the Testcase schema to their roles (input/label).
-// Unmapped fields are treated as metadata.
+// Maps top-level keys of the Testcase schema to their roles (input/expected
+// output). Unmapped fields are treated as metadata.
 //
-// The properties Inputs, Labels, Metadata are required.
+// The properties Expected, Inputs, Metadata are required.
 type TestsetUpdateParamsFieldMapping struct {
+	// Fields that represent expected outputs.
+	Expected []string `json:"expected,omitzero,required"`
 	// Fields that represent inputs to the AI system.
 	Inputs []string `json:"inputs,omitzero,required"`
-	// Fields that represent expected outputs/labels.
-	Labels []string `json:"labels,omitzero,required"`
-	// Fields that are not inputs or labels.
+	// Fields that are not inputs or expected outputs.
 	Metadata []string `json:"metadata,omitzero,required"`
 	paramObj
 }

@@ -50,11 +50,11 @@ func (r *RecordService) New(ctx context.Context, runID string, body RecordNewPar
 type Record struct {
 	// The ID of the Record.
 	ID string `json:"id,required"`
+	// The expected outputs for the Testcase.
+	Expected map[string]any `json:"expected,required"`
 	// The actual inputs sent to the system, which should match the system's input
 	// schema.
 	Inputs map[string]any `json:"inputs,required"`
-	// The expected outputs for the Testcase.
-	Labels map[string]any `json:"labels,required"`
 	// The actual outputs from the system.
 	Outputs map[string]any `json:"outputs,required"`
 	// The ID of the Run containing this Record.
@@ -64,8 +64,8 @@ type Record struct {
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		ID          respjson.Field
+		Expected    respjson.Field
 		Inputs      respjson.Field
-		Labels      respjson.Field
 		Outputs     respjson.Field
 		RunID       respjson.Field
 		TestcaseID  respjson.Field
@@ -81,11 +81,11 @@ func (r *Record) UnmarshalJSON(data []byte) error {
 }
 
 type RecordNewParams struct {
+	// The expected outputs for the Testcase.
+	Expected map[string]any `json:"expected,omitzero,required"`
 	// The actual inputs sent to the system, which should match the system's input
 	// schema.
 	Inputs map[string]any `json:"inputs,omitzero,required"`
-	// The expected outputs for the Testcase.
-	Labels map[string]any `json:"labels,omitzero,required"`
 	// The actual outputs from the system.
 	Outputs map[string]any `json:"outputs,omitzero,required"`
 	// The ID of the Testcase.

@@ -29,11 +29,11 @@ func TestRecordNewWithOptionalParams(t *testing.T) {
 		context.TODO(),
 		"135",
 		scorecard.RecordNewParams{
+			Expected: map[string]any{
+				"idealAnswer": "bar",
+			},
 			Inputs: map[string]any{
 				"question": "bar",
-			},
-			Labels: map[string]any{
-				"idealAnswer": "bar",
 			},
 			Outputs: map[string]any{
 				"response": "bar",

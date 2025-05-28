@@ -31,8 +31,8 @@ func TestTestsetNew(t *testing.T) {
 		scorecard.TestsetNewParams{
 			Description: "Testset for long context Q&A chatbot.",
 			FieldMapping: scorecard.TestsetNewParamsFieldMapping{
+				Expected: []string{"idealAnswer"},
 				Inputs:   []string{"question"},
-				Labels:   []string{"idealAnswer"},
 				Metadata: []string{"string"},
 			},
 			JsonSchema: map[string]any{
@@ -69,8 +69,8 @@ func TestTestsetUpdateWithOptionalParams(t *testing.T) {
 		scorecard.TestsetUpdateParams{
 			Description: scorecard.String("Updated description for the Q&A Testset."),
 			FieldMapping: scorecard.TestsetUpdateParamsFieldMapping{
+				Expected: []string{"string"},
 				Inputs:   []string{"string"},
-				Labels:   []string{"string"},
 				Metadata: []string{"string"},
 			},
 			JsonSchema: map[string]any{
